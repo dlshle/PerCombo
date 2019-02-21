@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<title>PerCombo</title>
+	</head>
+	<body>
+	<script type = "text/javascript" src = "./PerCombo.js"></script>
+	<script>
+		function generateOutput(){
+			selection = document.getElementById("selection").value;
+			let result = [];
+			switch(selection){
+				case "perm0":
+					result = getPermutation(document.getElementById("input").value);	
+					break;
+				case "perm1":
+					rPerm1("",document.getElementById("input").value, result);
+					break;
+				case "combo":
+					result = combo(document.getElementById("input").value);
+					break;
+				default:
+					alert("What the hell is that???");
+					return ;
+			}
+			document.getElementById("output").innerText = stringifyList(result);
+
+		}
+
+		function stringifyList(list){
+			let result = "";
+			for(let i=0;i<list.length;i++){
+				result+=list[i]+"\n"
+			}
+			return result;
+		}
+	</script>
+	<select id="selection">
+		<option value="perm0">Perm0</option>
+		<option value="perm1">Perm1</option>	
+		<option value="combo">Combo</option>
+	</select>
+	<br>
+	<input type="text" id="input"/>
+	<br>
+	<a href="#" onclick="generateOutput()">Test</a>
+	<div id="output">
+
+	</div>
+	</body>
+</html>
